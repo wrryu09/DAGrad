@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   font-size: 1rem;
   background: linear-gradient(135deg, #404040 0%, #242424 35%, #000000 100%);

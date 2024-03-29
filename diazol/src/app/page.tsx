@@ -1,3 +1,9 @@
+import MainPage from "@/pages/MainPage";
+
 export default function Home() {
-  return <div>디아졸</div>;
+  return (
+    <div>
+      <MainPage />
+    </div>
+  );
 }
