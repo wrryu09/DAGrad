@@ -8,7 +8,9 @@ const MainPage = (props: Props) => {
   return (
     <div className="flex flex-col items-center">
       <p>LogoImg</p>
-      <MainBtn text="나의 BPM 체크하기" route="survey" />
+      <div className="w-9/12">
+        <MainBtn text="나의 BPM 체크하기" route="survey/type" />
+      </div>
     </div>
   );
 };
