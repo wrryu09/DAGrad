@@ -16,7 +16,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         route={
           Number(params.id) + 1 < 11
             ? String(Number(params.id) + 1)
-            : "/survey/text"
+            : "/survey/emo"
         }
       />
     </div>
