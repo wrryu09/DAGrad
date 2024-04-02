@@ -1,7 +1,13 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 
-type Props = { text: string; route?: string; available?: boolean };
+type Props = {
+  text: string;
+  route?: string;
+  available?: boolean;
+  setScore?: (score: number) => void;
+  score?: number;
+};
 
 const MainBtn = (props: Props) => {
   const router = useRouter();
@@ -15,6 +21,9 @@ const MainBtn = (props: Props) => {
       onClick={() => {
         if (props.route && props.available !== false) {
           router.push(props.route);
+        }
+        if (props.setScore && props.score) {
+          props.setScore(props.score);
         }
       }}
     >
