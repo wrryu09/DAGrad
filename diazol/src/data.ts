@@ -65,3 +65,16 @@ export const questions: { [key: string]: QuestionDataType } = {
     choice: 5,
   },
 };
+
+export const fiveSelectionBtnContent = [
+  { content: "매우 자주 있었다", num: 4 },
+  { content: "자주 있었다", num: 3 },
+  { content: "때때로 있었다", num: 2 },
+  { content: "거의 없었다", num: 1 },
+  { content: "전혀 없었다", num: 0 },
+];
+export const typeSelectionBtnContent = [
+  { content: "기한까지 못 끝낼까 불안하다", num: 1 },
+  { content: "꼭 완벽하게 끝내고야 만다!", num: 2 },
+  { content: "감당하기 힘들어 숨어버리고 싶다", num: 3 },
+];
