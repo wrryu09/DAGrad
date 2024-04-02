@@ -8,6 +8,7 @@ type Props = {
   onScoreReceived?: (score: number) => void;
   score?: number;
   increasePhase?: () => void;
+  onclick?: () => void;
 };
 
 const MainBtn = (props: Props) => {
@@ -34,6 +35,10 @@ const MainBtn = (props: Props) => {
           // increase phase at survey/q
           if (props.increasePhase) {
             props.increasePhase();
+          }
+
+          if (props.onclick) {
+            props.onclick();
           }
         }
       }}
