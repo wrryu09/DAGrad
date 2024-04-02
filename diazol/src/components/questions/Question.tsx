@@ -95,14 +95,23 @@ const Question = (props: Props) => {
             />
           </SelectionBtnGroup>
         )}
-
-        <MainBtn
-          text="다음"
-          available={selection !== -1 ? true : false}
-          onScoreReceived={props.onScoreReceived}
-          score={val}
-          increasePhase={props.increasePhase}
-        />
+        {props.Qnum && props.Qnum + 1 <= 10 ? (
+          <MainBtn
+            text="다음"
+            available={selection !== -1 ? true : false}
+            onScoreReceived={props.onScoreReceived}
+            score={val}
+            increasePhase={props.increasePhase}
+          />
+        ) : (
+          <MainBtn
+            text="완료"
+            available={selection !== -1 ? true : false}
+            onScoreReceived={props.onScoreReceived}
+            score={val}
+            route="/result"
+          />
+        )}
       </div>
     </div>
   );
