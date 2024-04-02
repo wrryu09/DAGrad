@@ -5,8 +5,9 @@ type Props = {
   text: string;
   route?: string;
   available?: boolean;
-  setScore?: (score: number) => void;
+  onScoreReceived?: (score: number) => void;
   score?: number;
+  increasePhase?: () => void;
 };
 
 const MainBtn = (props: Props) => {
@@ -19,11 +20,21 @@ const MainBtn = (props: Props) => {
         props.available === false ? unavailableStyle : availableStyle
       }`}
       onClick={() => {
-        if (props.route && props.available !== false) {
-          router.push(props.route);
-        }
-        if (props.setScore && props.score) {
-          props.setScore(props.score);
+        if (props.available) {
+          // route to page
+          if (props.route) {
+            router.push(props.route);
+          }
+
+          // set score per question
+          if (props.onScoreReceived && props.score) {
+            props.onScoreReceived(props.score);
+          }
+
+          // increase phase at survey/q
+          if (props.increasePhase) {
+            props.increasePhase();
+          }
         }
       }}
     >

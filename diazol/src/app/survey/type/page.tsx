@@ -14,7 +14,7 @@ const Type = (props: Props) => {
         title={questions.type.title}
         content={questions.type.content}
         choice={questions.type.choice}
-        route="q/1"
+        route="/survey/q"
       />
     </div>
   );
