@@ -20,7 +20,7 @@ const page = (props: Props) => {
           placeholder="🥹🥰🌴"
           maxLength={3}
         ></input>
-        <MainBtn text="다음" route="/survey/text" />
+        <MainBtn text="다음" available={true} route="/survey/text" />
       </div>
     </div>
   );
