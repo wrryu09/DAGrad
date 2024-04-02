@@ -93,7 +93,7 @@ const Question = (props: Props) => {
                 available={selection !== -1 ? true : false}
                 onScoreReceived={props.onScoreReceived}
                 score={val}
-                route="/result"
+                route="/survey/emo"
               />
             ) : (
               // not survey questions, route to other pages
