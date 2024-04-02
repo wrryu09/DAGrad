@@ -8,6 +8,7 @@ type Props = {
   title: string;
   content: string;
   choice: number;
+  route?: string;
   onScoreReceived?: (score: number) => void;
   increasePhase?: () => void;
 };
@@ -90,13 +91,25 @@ const Question = (props: Props) => {
             increasePhase={props.increasePhase}
           />
         ) : (
-          <MainBtn
-            text="완료"
-            available={selection !== -1 ? true : false}
-            onScoreReceived={props.onScoreReceived}
-            score={val}
-            route="/result"
-          />
+          <>
+            {props.Qnum ? (
+              <MainBtn
+                text="완료"
+                available={selection !== -1 ? true : false}
+                onScoreReceived={props.onScoreReceived}
+                score={val}
+                route="/result"
+              />
+            ) : (
+              <MainBtn
+                text="다음"
+                available={selection !== -1 ? true : false}
+                onScoreReceived={props.onScoreReceived}
+                score={val}
+                route={props.route}
+              />
+            )}
+          </>
         )}
       </div>
     </div>
