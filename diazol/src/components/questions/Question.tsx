@@ -76,37 +76,39 @@ const Question = (props: Props) => {
         )}
 
         {/* survey questions, go to next question phase */}
-        {props.Qnum && props.Qnum + 1 <= 10 ? (
-          <MainBtn
-            text="다음"
-            available={selection !== -1 ? true : false}
-            onScoreReceived={props.onScoreReceived}
-            score={val}
-            increasePhase={props.increasePhase}
-          />
-        ) : (
-          <>
-            {/* survey questions, exceeds 10 and finish questions */}
-            {props.Qnum ? (
-              <MainBtn
-                text="완료"
-                available={selection !== -1 ? true : false}
-                onScoreReceived={props.onScoreReceived}
-                score={val}
-                route="/survey/emo"
-              />
-            ) : (
-              // not survey questions, route to other pages
-              <MainBtn
-                text="다음"
-                available={selection !== -1 ? true : false}
-                onScoreReceived={props.onScoreReceived}
-                score={val}
-                route={props.route}
-              />
-            )}
-          </>
-        )}
+        <div className="flex justify-center">
+          {props.Qnum && props.Qnum + 1 <= 10 ? (
+            <MainBtn
+              text="다음"
+              available={selection !== -1 ? true : false}
+              onScoreReceived={props.onScoreReceived}
+              score={val}
+              increasePhase={props.increasePhase}
+            />
+          ) : (
+            <>
+              {/* survey questions, exceeds 10 and finish questions */}
+              {props.Qnum ? (
+                <MainBtn
+                  text="완료"
+                  available={selection !== -1 ? true : false}
+                  onScoreReceived={props.onScoreReceived}
+                  score={val}
+                  route="/survey/emo"
+                />
+              ) : (
+                // not survey questions, route to other pages
+                <MainBtn
+                  text="다음"
+                  available={selection !== -1 ? true : false}
+                  onScoreReceived={props.onScoreReceived}
+                  score={val}
+                  route={props.route}
+                />
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
