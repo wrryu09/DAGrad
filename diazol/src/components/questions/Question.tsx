@@ -8,30 +8,38 @@ type Props = {
   title: string;
   content: string;
   choice: number;
-  route: string;
   onScoreReceived?: (score: number) => void;
+  increasePhase?: () => void;
 };
 
 const Question = (props: Props) => {
   const order = [1, 2, 3, 6, 9, 10];
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(-1);
   const [selection, setSelection] = useState(-1);
-  
+
+  // reset selection on Qnum change
+  useEffect(() => {
+    setSelection(-1);
+    setVal(-1);
+  }, [props.Qnum]);
+
+  // set value via question order
   useEffect(() => {
     if (props.Qnum) {
-      if (props.Qnum in order) {
+      if (order.includes(props.Qnum)) {
         setVal(selection);
       } else {
         setVal(4 - selection);
       }
     }
-  }, [selection]);
+  }, [selection, props.Qnum]);
 
   return (
     <div className="flex flex-col text-white break-keep whitespace-pre-wrap">
       <div className="mt-10 px-8">
         <h3 className="text-3xl font-semibold mb-3">{props.title}</h3>
         <p className="text-lg">{props.content}</p>
+        {val}
         {props.choice === 5 ? (
           <SelectionBtnGroup>
             <SelectionBtn
@@ -90,10 +98,10 @@ const Question = (props: Props) => {
 
         <MainBtn
           text="다음"
-          available={val !== -1 ? true : false}
-          route={props.route}
-          setScore={props.onScoreReceived}
+          available={selection !== -1 ? true : false}
+          onScoreReceived={props.onScoreReceived}
           score={val}
+          increasePhase={props.increasePhase}
         />
       </div>
     </div>
