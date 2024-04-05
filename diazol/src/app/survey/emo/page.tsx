@@ -1,29 +1,48 @@
 "use client";
+import { emojis } from "@/assets/emojis/emojis";
 import MainBtn from "@/components/common/MainBtn";
 import TopBar from "@/components/common/TopBar";
-import React from "react";
+import Emoji from "@/components/questions/Emoji";
+import React, { useState } from "react";
 
 type Props = {};
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
+  const [emojiSelection, setEmojiSelection] = useState(-1);
+  const emojiArr = Object.entries(emojis);
+
+  const selectEmoji = (num: number) => {
+    setEmojiSelection(num);
+  };
   return (
     <div className="flex flex-col items-center">
       <TopBar />
       <div className="w-9/12 flex flex-col items-center text-center">
         <div className="text-white my-10">
           <h1>Part2</h1>
-          <p>짜증날 때 제일 거슬리는 소리를 이모지🍀로 표현해주세요!</p>
+          <p>짜증날 때 제일 거슬리는 소리의 형태가 있다면 무엇일까요?</p>
+          {emojiSelection}
         </div>
-        {/* 커스텀 이모지로 변경 예정 */}
-        <input
-          className="w-9/12 bg-midGrey rounded-md text-6xl p-4 placeholder:text-darkGrey text-center"
-          placeholder="🥹🥰🌴"
-          maxLength={3}
-        ></input>
-        <MainBtn text="다음" available={true} route="/survey/text" />
+
+        <div className="w-fit flex flex-wrap gap-6 bg-darkGrey p-4 py-8 rounded-lg justify-center">
+          {emojiArr.map((emo, idx) => (
+            <Emoji
+              idx={idx}
+              key={`${emo}+${idx}`}
+              emo={emo}
+              current={emojiSelection}
+              selectEmoji={selectEmoji}
+            />
+          ))}
+        </div>
+        <MainBtn
+          text="다음"
+          available={emojiSelection !== -1 ? true : false}
+          route="/survey/text"
+        />
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
