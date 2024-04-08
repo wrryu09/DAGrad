@@ -3,3 +3,9 @@ type QuestionDataType = {
   content: string;
   choice: number;
 };
+
+interface UserDataType {
+  choiceScore: number;
+  emojiNum: number;
+  stressWord: string;
+}
