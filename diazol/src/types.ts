@@ -5,6 +5,7 @@ type QuestionDataType = {
 };
 
 interface UserDataType {
+  stressType: number;
   choiceScore: number;
   emojiNum: number;
   stressWord: string;

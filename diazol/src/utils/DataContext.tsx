@@ -12,6 +12,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [data, setData] = useState<UserDataType>({
+    stressType: -1,
     choiceScore: -1,
     emojiNum: -1,
     stressWord: "",
