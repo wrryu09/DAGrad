@@ -2,23 +2,17 @@
 import MainBtn from "@/components/common/MainBtn";
 import TopBar from "@/components/common/TopBar";
 import TextInput from "@/components/questions/TextInput";
-import { useData } from "@/utils/DataContext";
-import React, { useState } from "react";
+import useSetContextData from "@/utils/useSetContextData";
+import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
-  const [stressWord, setStressWord] = useState("");
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStressWord(e.target.value);
-  };
-  const { data, setData } = useData();
+  const { mySelection, setSelection, setContextData } =
+    useSetContextData("stressWord");
 
-  const setStressWordData = async () => {
-    await setData((prevData) => ({
-      ...prevData,
-      stressWord: stressWord,
-    }));
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelection(e.target.value);
   };
 
   return (
@@ -32,8 +26,8 @@ const Page = (props: Props) => {
         <TextInput onChange={onChange} />
         <MainBtn
           text="다음"
-          available={stressWord !== "" ? true : false}
-          onclick={setStressWordData}
+          available={mySelection !== "" ? true : false}
+          onclick={setContextData}
           route="/result"
         />
       </div>
