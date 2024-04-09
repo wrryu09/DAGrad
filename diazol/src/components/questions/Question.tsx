@@ -33,6 +33,8 @@ const Question = (props: Props) => {
       } else {
         setVal(4 - selection);
       }
+    } else {
+      setVal(selection);
     }
   }, [selection, props.Qnum]);
 
