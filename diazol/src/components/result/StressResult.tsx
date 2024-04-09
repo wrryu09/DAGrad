@@ -10,11 +10,10 @@ const StressResult = (props: Props) => {
   return (
     <div className="flex flex-col justify-center text-center">
       <h1 className="text-3xl font-semibold mt-20 text-white leading-10">
-        {/* testing */}
-        <p>stressType : {data.stressType}</p>
+        {/* <p>stressType : {data.stressType}</p>
         <p>emojiNum : {data.emojiNum}</p>
-        <p>stressWord : {data.stressWord}</p>
-        {/* testing */}
+        <p>stressWord : {data.stressWord}</p> */}
+
         <p>당신의 스트레스 점수는</p>
         <p>{data.choiceScore}점</p>
       </h1>

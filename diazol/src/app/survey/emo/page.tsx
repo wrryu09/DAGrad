@@ -24,7 +24,7 @@ const Page = (props: Props) => {
         <div className="text-white my-10">
           <h1>Part2</h1>
           <p>짜증날 때 제일 거슬리는 소리의 형태가 있다면 무엇일까요?</p>
-          {mySelection}
+          {/* {mySelection} */}
         </div>
 
         <div className="w-fit flex flex-wrap gap-6 bg-darkGrey p-4 py-8 rounded-lg justify-center">

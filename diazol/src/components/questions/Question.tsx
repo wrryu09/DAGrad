@@ -43,7 +43,6 @@ const Question = (props: Props) => {
       <div className="mt-10 px-8">
         <h3 className="text-3xl font-semibold mb-3">{props.title}</h3>
         <p className="text-lg">{props.content}</p>
-        {val}
 
         {props.choice === 5 ? (
           // select buttons when the question has 5 choices

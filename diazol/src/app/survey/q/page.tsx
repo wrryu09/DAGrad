@@ -29,7 +29,6 @@ const Page = (props: Props) => {
   return (
     <div>
       <TopBar />
-      <h1 className="text-3xl text-white">{score}</h1>
       <Question
         Qnum={phase}
         title={questions["Q" + phase].title}
