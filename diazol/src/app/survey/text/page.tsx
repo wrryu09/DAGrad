@@ -2,6 +2,7 @@
 import MainBtn from "@/components/common/MainBtn";
 import TopBar from "@/components/common/TopBar";
 import TextInput from "@/components/questions/TextInput";
+import { useData } from "@/utils/DataContext";
 import React, { useState } from "react";
 
 type Props = {};
@@ -11,6 +12,15 @@ const Page = (props: Props) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStressWord(e.target.value);
   };
+  const { data, setData } = useData();
+
+  const setStressWordData = async () => {
+    await setData((prevData) => ({
+      ...prevData,
+      stressWord: stressWord,
+    }));
+  };
+
   return (
     <div className="flex flex-col items-center">
       <TopBar />
@@ -23,6 +33,7 @@ const Page = (props: Props) => {
         <MainBtn
           text="다음"
           available={stressWord !== "" ? true : false}
+          onclick={setStressWordData}
           route="/result"
         />
       </div>
