@@ -15,11 +15,15 @@ const Page = (props: Props) => {
     if (phase + 1 <= 10) setPhase(phase + 1);
   };
   const handleScoreIncrease = (sc: number) => {
-    setScore(score + sc);
-    setData(() => {
-      const newData = { ...data };
-      newData.choiceScore = score;
-      return newData;
+    setScore((prevScore) => {
+      const newScore = prevScore + sc;
+      setData((prevData) => {
+        return {
+          ...prevData,
+          choiceScore: newScore,
+        };
+      });
+      return newScore;
     });
   };
   return (
