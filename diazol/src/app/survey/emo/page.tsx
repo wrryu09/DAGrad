@@ -3,6 +3,7 @@ import { emojis } from "@/assets/emojis/emojis";
 import MainBtn from "@/components/common/MainBtn";
 import TopBar from "@/components/common/TopBar";
 import Emoji from "@/components/questions/Emoji";
+import { useData } from "@/utils/DataContext";
 import React, { useState } from "react";
 
 type Props = {};
@@ -10,9 +11,16 @@ type Props = {};
 const Page = (props: Props) => {
   const [emojiSelection, setEmojiSelection] = useState(-1);
   const emojiArr = Object.entries(emojis);
+  const { setData } = useData();
 
   const selectEmoji = (num: number) => {
     setEmojiSelection(num);
+  };
+  const setEmojiSelectionData = () => {
+    setData((prevData) => ({
+      ...prevData,
+      emojiNum: emojiSelection,
+    }));
   };
   return (
     <div className="flex flex-col items-center">
@@ -39,6 +47,7 @@ const Page = (props: Props) => {
           text="다음"
           available={emojiSelection !== -1 ? true : false}
           route="/survey/text"
+          onclick={setEmojiSelectionData}
         />
       </div>
     </div>
