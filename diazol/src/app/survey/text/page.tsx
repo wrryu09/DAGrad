@@ -2,15 +2,19 @@
 import MainBtn from "@/components/common/MainBtn";
 import TopBar from "@/components/common/TopBar";
 import TextInput from "@/components/questions/TextInput";
-import React, { useState } from "react";
+import useSetContextData from "@/utils/useSetContextData";
+import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
-  const [stressWord, setStressWord] = useState("");
+  const { mySelection, setSelection, setContextData } =
+    useSetContextData("stressWord");
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStressWord(e.target.value);
+    setSelection(e.target.value);
   };
+
   return (
     <div className="flex flex-col items-center">
       <TopBar />
@@ -22,7 +26,8 @@ const Page = (props: Props) => {
         <TextInput onChange={onChange} />
         <MainBtn
           text="다음"
-          available={stressWord !== "" ? true : false}
+          available={mySelection !== "" ? true : false}
+          onclick={setContextData}
           route="/result"
         />
       </div>

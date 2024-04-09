@@ -1,13 +1,13 @@
 import { db } from "@/utils/firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
-/** store emojiNum to firestore */
-export const putEmojiNum = async (num: number) => {
-  const emojiDBRef = doc(db, "survey", "emoji");
+/** store data to firestore */
+export const putUserData = async (content: UserDataType) => {
+  const userDBRef = doc(db, "survey", "data");
   const date = new Date();
   try {
-    await updateDoc(emojiDBRef, {
-      emo: arrayUnion({ date, num }),
+    await updateDoc(userDBRef, {
+      data: arrayUnion({ date, content }),
     });
   } catch (e) {
     console.log(e);
