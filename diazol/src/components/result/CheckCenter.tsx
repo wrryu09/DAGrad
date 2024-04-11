@@ -6,6 +6,7 @@ import MorseGraphic from "./MorseGraphic";
 
 type Props = {
   showResult: () => void;
+  morseCode: string;
 };
 
 const CheckCenter = (props: Props) => {
@@ -33,7 +34,7 @@ const CheckCenter = (props: Props) => {
         </div>
       ) : (
         <div className="h-dvh flex justify-center items-center">
-          <MorseGraphic />
+          <MorseGraphic morseCode={props.morseCode} />
         </div>
       )}
     </div>
