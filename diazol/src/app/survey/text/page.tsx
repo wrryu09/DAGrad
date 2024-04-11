@@ -26,7 +26,7 @@ const Page = (props: Props) => {
         <TextInput onChange={onChange} />
         <MainBtn
           text="다음"
-          available={mySelection !== "" ? true : false}
+          available={mySelection !== -1 ? true : false}
           onclick={setContextData}
           route="/result"
         />
