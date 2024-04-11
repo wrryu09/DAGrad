@@ -18,9 +18,14 @@ const config: Config = {
           "0%": { transform: "translate(-100%)" },
           "100%": { transform: "translate(150%)" },
         },
+        rotate: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         moveMorse: "moveRight 4s linear 1",
+        rotateSpinner: "rotate 3s linear infinite",
       },
       colors: {
         diazolRed: "#ff0000",
