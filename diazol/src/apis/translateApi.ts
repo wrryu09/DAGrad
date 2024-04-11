@@ -13,9 +13,13 @@ export const getRomanWord = async (text: string) => {
         },
       }
     );
-    console.log(translated);
-    return translated;
+    console.log(translated.data.aResult[0].aItems[0].name);
+
+    return translated.data.aResult[0].aItems[0].name;
   } catch (e) {
     console.log(e);
+
+    // romanization 실패시 exception 스트링 반환
+    return "exception";
   }
 };

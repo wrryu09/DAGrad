@@ -13,6 +13,20 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        moveRight: {
+          "0%": { transform: "translate(-100%)" },
+          "100%": { transform: "translate(150%)" },
+        },
+        rotate: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
+      animation: {
+        moveMorse: "moveRight 4s linear 1",
+        rotateSpinner: "rotate 3s linear infinite",
+      },
       colors: {
         diazolRed: "#ff0000",
         lightGrey: "#E8E8E8",
