@@ -75,7 +75,7 @@ export const fiveSelectionBtnContent = [
 ];
 export const typeSelectionBtnContent = [
   { content: "기한까지 못 끝낼까 불안하다", num: 1 },
-  { content: "꼭 완벽하게 끝내고야 만다!", num: 2 },
+  { content: "꼭 완벽하게 해내야만 한다", num: 2 },
   { content: "감당하기 힘들어 숨어버리고 싶다", num: 3 },
 ];
 export const stressInfo = [
