@@ -10,24 +10,21 @@ type Props = {
 
 const Emoji = (props: Props) => {
   return (
-    <div
+    <Image
+      key={props.idx}
+      src={props.emo[1]}
+      width={80}
+      height={80}
+      alt="sample"
+      className={`rounded-full border-2 ${
+        props.current === props.idx
+          ? "shadow-midGrey shadow-xl border-white"
+          : "border-darkGrey"
+      }`}
       onClick={() => {
         props.selectEmoji(props.idx);
       }}
-      className={
-        props.current === props.idx
-          ? "border-diazolRed border-2"
-          : "border-2 border-darkGrey"
-      }
-    >
-      <Image
-        key={props.idx}
-        src={props.emo[1]}
-        width={80}
-        height={80}
-        alt="sample"
-      />
-    </div>
+    />
   );
 };
 
