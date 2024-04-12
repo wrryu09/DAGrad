@@ -2,8 +2,10 @@ import axios from "axios";
 /** get romanized text */
 export const getRomanWord = async (text: string) => {
   try {
+    const newTxt = text.replace(" ", "");
+    console.log(newTxt)
     const translated = await axios.get(
-      `${process.env.NEXT_PUBLIC_MY_SERVER}/romanize?text=${text}`
+      `${process.env.NEXT_PUBLIC_MY_SERVER}/romanize?text=${newTxt}`
     );
     console.log(translated.data.translated);
 
