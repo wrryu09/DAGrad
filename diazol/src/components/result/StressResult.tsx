@@ -24,7 +24,12 @@ const StressResult = (props: Props) => {
 
   return (
     <div className="flex flex-col justify-center text-center">
-      <Image alt="smage" src={nickname.image} />
+      <Image
+        width={350}
+        className="self-center"
+        alt="smage"
+        src={nickname.image}
+      />
       <h1 className="text-3xl font-semibold mt-20 text-white leading-10">
         <h2>{nickname.name}</h2>
         <p>{nickname.content}</p>
