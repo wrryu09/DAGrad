@@ -10,6 +10,7 @@ export type NickNameType = {
   name: string;
   content: string;
   image: StaticImageData;
+  qrImage: StaticImageData;
 };
 
 export type NickNameIdxType =

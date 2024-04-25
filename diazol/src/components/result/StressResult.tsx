@@ -5,7 +5,7 @@ import { useData } from "@/utils/DataContext";
 import Image from "next/image";
 import { getStressNickName } from "@/utils/getStressNickname";
 import { NickNameType } from "@/types";
-import { smage } from "@/assets/images/smage/smage";
+import { smage, smageQr } from "@/assets/images/smage/smage";
 
 type Props = {};
 
@@ -15,6 +15,7 @@ const StressResult = (props: Props) => {
     name: "Prestissimo",
     content: "",
     image: smage.high1,
+    qrImage: smageQr.high1,
   });
 
   useEffect(() => {
@@ -38,6 +39,13 @@ const StressResult = (props: Props) => {
           content={info.content}
         />
       ))}
+
+      <Image
+        width={150}
+        alt="QR code"
+        src={nickname.qrImage}
+        className="self-center"
+      />
     </div>
   );
 };

@@ -1,16 +1,16 @@
-import { smage } from "@/assets/images/smage/smage";
+import { smage, smageQr } from "@/assets/images/smage/smage";
 import { NickNameIdxType, NickNameType } from "@/types";
 
 const NICKNAME = {
-  low1: { name: "Largo", content: "느리고 폭 넓게", image: smage.low1 },
-  low2: { name: "Adagio", content: "느리고 장중하게", image: smage.low2 },
-  low3: { name: "Lento", content: "느리고 무겁게", image: smage.low3 },
-  mid1: { name: "Andante", content: "느리게", image: smage.mid1 },
-  mid2: { name: "Adagietto", content: "조금 빠르게", image: smage.mid2 },
-  mid3: { name: "Andantino", content: "조금 빠르게", image: smage.mid3 },
-  high1: { name: "Vivace", content: "빠르고 경쾌하게", image: smage.high1 },
-  high2: { name: "Presto", content: "빠르고 성급하게", image: smage.high2 },
-  high3: { name: "Allegro", content: "빠르게", image: smage.high3 },
+  low1: { name: "Largo", content: "느리고 폭 넓게" },
+  low2: { name: "Adagio", content: "느리고 장중하게" },
+  low3: { name: "Lento", content: "느리고 무겁게" },
+  mid1: { name: "Andante", content: "느리게" },
+  mid2: { name: "Adagietto", content: "조금 빠르게" },
+  mid3: { name: "Andantino", content: "조금 빠르게" },
+  high1: { name: "Vivace", content: "빠르고 경쾌하게" },
+  high2: { name: "Presto", content: "빠르고 성급하게" },
+  high3: { name: "Allegro", content: "빠르게" },
 };
 
 /** 구분된 결과 받아 state에 반영 */
@@ -21,7 +21,8 @@ const putNicknameState = (
   setNickname({
     name: NICKNAME[nicknameState].name,
     content: NICKNAME[nicknameState].content,
-    image: NICKNAME[nicknameState].image,
+    image: smage[nicknameState],
+    qrImage: smageQr[nicknameState],
   });
 };
 
