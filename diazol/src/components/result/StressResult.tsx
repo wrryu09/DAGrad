@@ -6,6 +6,7 @@ import Image from "next/image";
 import { getStressNickName } from "@/utils/getStressNickname";
 import { NickNameType } from "@/types";
 import { smage, smageQr } from "@/assets/images/smage/smage";
+import MainBtn from "../common/MainBtn";
 
 type Props = {};
 
@@ -23,13 +24,8 @@ const StressResult = (props: Props) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center text-center">
-      <Image
-        width={350}
-        className="self-center"
-        alt="smage"
-        src={nickname.image}
-      />
+    <div className="flex flex-col justify-center text-center items-center">
+      <Image width={350} alt="smage" src={nickname.image} />
       <h1 className="text-3xl font-semibold mt-20 text-white leading-10">
         <h2>{nickname.name}</h2>
         <p>{nickname.content}</p>
@@ -45,12 +41,9 @@ const StressResult = (props: Props) => {
         />
       ))}
 
-      <Image
-        width={150}
-        alt="QR code"
-        src={nickname.qrImage}
-        className="self-center"
-      />
+      <Image width={150} alt="QR code" src={nickname.qrImage} />
+
+      <MainBtn text="메인 화면으로 돌아가기" route="/" available={true} />
     </div>
   );
 };
