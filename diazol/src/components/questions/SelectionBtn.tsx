@@ -14,13 +14,13 @@ const SelectionBtn = (props: Props) => {
 
   return (
     <div
-      className={`w-full flex items-center justify-center font-semibold`}
+      className={`w-10/12 self-center flex items-center justify-center font-semibold`}
       onClick={() => {
         props.setSelection(props.num);
       }}
     >
       <div
-        className={`w-full flex items-center ${
+        className={`w-full flex items-center justify-center ${
           props.selection == props.num ? selectedStyle : defaultStyle
         }`}
       >
