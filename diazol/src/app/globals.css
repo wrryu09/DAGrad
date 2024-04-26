@@ -4,14 +4,15 @@
 
 body {
   font-size: 1rem;
-  background: linear-gradient(135deg, #404040 0%, #242424 35%, #000000 100%);
+  /* background: linear-gradient(135deg, #404040 0%, #242424 35%, #000000 100%); */
+  background-color: black;
   height: 100vh;
   margin: 0 auto;
   position: relative;
 }
 
 html {
-  background-color: black;
+  background-color: rgb(21, 21, 21);
   margin: 0 auto;
 }
 
