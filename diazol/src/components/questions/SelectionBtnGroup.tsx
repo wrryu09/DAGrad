@@ -5,7 +5,7 @@ interface SelectionGroupProps {
 }
 
 const SelectionBtnGroup: React.FC<SelectionGroupProps> = ({ children }) => {
-  return <fieldset className="flex flex-col gap-2 my-10">{children}</fieldset>;
+  return <fieldset className="flex flex-col gap-4 my-10">{children}</fieldset>;
 };
 
 export default SelectionBtnGroup;

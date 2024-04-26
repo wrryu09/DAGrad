@@ -8,19 +8,30 @@ type Props = {
 };
 
 const SelectionBtn = (props: Props) => {
-  const selectedStyle = "text-black bg-lightGrey";
-  const defaultStyle = "text-midGrey bg-darkGrey";
+  const selectedStyle =
+    "w-full border border-diazolRed rounded-full text-white";
+  const defaultStyle =
+    "w-full border rounded-full text-midGrey backdrop-blur-sm bg-[rgba(255, 255, 255, 0.10)]";
 
   return (
     <div
-      className={`w-full py-3 flex rounded-md items-center justify-center font-semibold hover:text-black hover:bg-lightGrey ${
-        props.selection == props.num ? selectedStyle : defaultStyle
-      }`}
+      className={`w-full flex items-center justify-center font-semibold`}
       onClick={() => {
         props.setSelection(props.num);
       }}
     >
-      <p>{props.text}</p>
+      <div
+        className={`h-16 flex items-center ${
+          props.selection == props.num ? selectedStyle : defaultStyle
+        }`}
+      >
+        <p className="p-6">{props.text}</p>
+      </div>
+      <div
+        className={`h-16 w-20 ${
+          props.selection == props.num ? selectedStyle : defaultStyle
+        }`}
+      ></div>
     </div>
   );
 };
