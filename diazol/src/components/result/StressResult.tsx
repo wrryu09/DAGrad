@@ -41,7 +41,12 @@ const StressResult = (props: Props) => {
         />
       ))}
 
-      <Image width={150} alt="QR code" src={nickname.qrImage} />
+      <Image
+        width={150}
+        alt="QR code"
+        src={nickname.qrImage}
+        className="mt-20 mb-60"
+      />
 
       <MainBtn text="메인 화면으로 돌아가기" route="/" available={true} />
     </div>
