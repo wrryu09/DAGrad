@@ -17,7 +17,7 @@ const MainBtn = (props: Props) => {
   const unavailableStyle = "bg-darkGrey text-midGrey";
   return (
     <div
-      className={`fixed w-10/12 bottom-16 py-3 flex rounded-md items-center justify-center font-semibold ${
+      className={`fixed w-10/12 max-w-[500px] bottom-16 py-3 flex rounded-md items-center justify-center font-semibold ${
         props.available === false ? unavailableStyle : availableStyle
       }`}
       onClick={() => {
