@@ -3,6 +3,7 @@ import MainBtn from "../common/MainBtn";
 import { useData } from "@/utils/DataContext";
 import { putUserData } from "@/utils/putEmojiNum";
 import MorseGraphic from "./MorseGraphic";
+import { playMorseSound } from "@/utils/playMorseSound";
 
 type Props = {
   showResult: () => void;
@@ -16,6 +17,7 @@ const CheckCenter = (props: Props) => {
   const lastSubmit = async () => {
     await putUserData(data);
     props.showResult();
+    playMorseSound(props.morseCode);
   };
   useEffect(() => {
     setTimeout(() => {
