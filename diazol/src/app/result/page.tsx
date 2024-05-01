@@ -38,7 +38,7 @@ const Page = (props: Props) => {
     <div>
       <TopBar />
       {showRes ? (
-        <StressResult />
+        <StressResult morseCode={morseCode} />
       ) : (
         <>
           {morseCode !== "" ? (

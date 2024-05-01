@@ -7,8 +7,11 @@ import { getStressNickName } from "@/utils/getStressNickname";
 import { NickNameType } from "@/types";
 import { smage, smageQr } from "@/assets/images/smage/smage";
 import MainBtn from "../common/MainBtn";
+import { playMorseSound } from "@/utils/playMorseSound";
 
-type Props = {};
+type Props = {
+  morseCode: string;
+};
 
 const StressResult = (props: Props) => {
   const { data } = useData();
@@ -25,13 +28,20 @@ const StressResult = (props: Props) => {
 
   return (
     <div className="flex flex-col justify-center text-center items-center">
-      <Image width={350} alt="smage" src={nickname.image} />
-      <h1 className="text-3xl font-semibold mt-20 text-white leading-10">
-        <h2>{nickname.name}</h2>
+      <Image
+        width={350}
+        alt="smage"
+        src={nickname.image}
+        onClick={() => {
+          playMorseSound(props.morseCode);
+        }}
+      />
+      <div className="text-3xl font-semibold mt-20 text-white leading-10">
+        <h1>{nickname.name}</h1>
         <p>{nickname.content}</p>
         <p>당신의 스트레스 점수는</p>
         <p>{data.choiceScore}점</p>
-      </h1>
+      </div>
 
       {stressInfo.map((info) => (
         <InfoBox
