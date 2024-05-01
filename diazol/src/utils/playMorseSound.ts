@@ -1,43 +1,46 @@
-let AudioContext = window.AudioContext;
-let ctx = new AudioContext();
-let dot = 1.2 / 15;
-
+/** 모스부호 사운드 재생 */
 export const playMorseSound = (morse: string) => {
-  let time = ctx.currentTime;
+  if (typeof window !== "undefined") {
+    let AudioContext = window.AudioContext;
+    let ctx = new AudioContext();
+    let dot = 1.2 / 15;
 
-  let oscillator = ctx.createOscillator();
-  oscillator.type = "sine";
-  oscillator.frequency.value = 600;
+    let time = ctx.currentTime;
 
-  let gainNode = ctx.createGain();
-  gainNode.gain.setValueAtTime(0, time);
+    let oscillator = ctx.createOscillator();
+    oscillator.type = "sine";
+    oscillator.frequency.value = 600;
 
-  console.log("playMorseSound : ", morse);
-  morse.split("").forEach((c) => {
-    console.log(c);
-    switch (c) {
-      case ".":
-        gainNode.gain.setValueAtTime(1, time);
-        time += dot;
-        gainNode.gain.setValueAtTime(0, time);
-        time += dot;
-        break;
-      case "-":
-        gainNode.gain.setValueAtTime(1, time);
-        time += 3 * dot;
-        gainNode.gain.setValueAtTime(0, time);
-        time += dot;
-        break;
-      case " ":
-        time += 7 * dot;
-        break;
-    }
-  });
+    let gainNode = ctx.createGain();
+    gainNode.gain.setValueAtTime(0, time);
 
-  oscillator.connect(gainNode);
-  gainNode.connect(ctx.destination);
+    morse.split("").forEach((c) => {
+      switch (c) {
+        case ".":
+          gainNode.gain.setValueAtTime(1, time);
+          time += dot;
+          gainNode.gain.setValueAtTime(0, time);
+          time += dot;
+          break;
+        case "-":
+          gainNode.gain.setValueAtTime(1, time);
+          time += 3 * dot;
+          gainNode.gain.setValueAtTime(0, time);
+          time += dot;
+          break;
+        case " ":
+          time += 7 * dot;
+          break;
+      }
+    });
 
-  oscillator.start();
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
 
-  return false;
+    oscillator.start();
+
+    return false;
+  } else {
+    console.log("cannot play morse sound");
+  }
 };
