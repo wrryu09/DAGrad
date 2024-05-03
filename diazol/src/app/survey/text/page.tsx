@@ -1,4 +1,5 @@
 "use client";
+import BackGroundEmoji from "@/components/common/BackGroundEmoji";
 import MainBtn from "@/components/common/MainBtn";
 import TopBar from "@/components/common/TopBar";
 import TextInput from "@/components/questions/TextInput";
@@ -18,6 +19,7 @@ const Page = (props: Props) => {
   return (
     <div className="flex flex-col items-center">
       <TopBar />
+      <BackGroundEmoji />
       <div className="w-9/12 flex flex-col items-center text-center">
         <div className="text-white my-10">
           <h1>Part2</h1>

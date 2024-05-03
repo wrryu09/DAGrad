@@ -1,5 +1,6 @@
 "use client";
 import { emojis } from "@/assets/emojis/emojis";
+import BackGroundEmoji from "@/components/common/BackGroundEmoji";
 import MainBtn from "@/components/common/MainBtn";
 import TopBar from "@/components/common/TopBar";
 import Emoji from "@/components/questions/Emoji";
@@ -20,6 +21,7 @@ const Page = (props: Props) => {
   return (
     <div className="flex flex-col items-center">
       <TopBar />
+      <BackGroundEmoji />
       <div className="w-9/12 flex flex-col items-center text-center">
         <div className="text-white my-10">
           <h1>Part2</h1>
@@ -27,7 +29,7 @@ const Page = (props: Props) => {
           {/* {mySelection} */}
         </div>
 
-        <div className="w-fit flex flex-wrap gap-6 bg-darkGrey p-4 py-8 rounded-lg justify-center">
+        <div className="w-fit flex flex-wrap gap-6 bg-[rgba(60,60,60,0.10)] backdrop-blur-lg p-4 py-8 rounded-lg justify-center">
           {emojiArr.map((emo, idx) => (
             <Emoji
               idx={idx}

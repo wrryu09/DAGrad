@@ -13,11 +13,11 @@ type Props = {
 
 const MainBtn = (props: Props) => {
   const router = useRouter();
-  const availableStyle = "bg-white text-black hover:bg-lightGrey";
-  const unavailableStyle = "bg-darkGrey text-midGrey";
+  const availableStyle = "text-white border-diazolRed";
+  const unavailableStyle = "text-midGrey border-midGrey";
   return (
     <div
-      className={`fixed w-10/12 max-w-[500px] bottom-16 py-3 flex rounded-md items-center justify-center font-semibold ${
+      className={`fixed w-10/12 border rounded-full max-w-[500px] bottom-16 py-3 flex items-center justify-center font-semibold bg-white/opacity-5 backdrop-blur-md ${
         props.available === false ? unavailableStyle : availableStyle
       }`}
       onClick={() => {

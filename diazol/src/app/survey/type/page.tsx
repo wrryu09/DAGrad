@@ -1,4 +1,5 @@
 "use client";
+import BackGroundEmoji from "@/components/common/BackGroundEmoji";
 import TopBar from "@/components/common/TopBar";
 import Question from "@/components/questions/Question";
 import { questions } from "@/data";
@@ -17,6 +18,7 @@ const Type = (props: Props) => {
   return (
     <div>
       <TopBar />
+      <BackGroundEmoji />
       <Question
         title={questions.type.title}
         content={questions.type.content}
