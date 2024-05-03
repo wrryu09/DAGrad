@@ -14,6 +14,9 @@ const Page = (props: Props) => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelection(e.target.value);
+    if (e.target.value == "") {
+      setSelection(-1);
+    }
   };
 
   return (
