@@ -33,7 +33,7 @@ const StressResult = (props: Props) => {
         alt="smage"
         src={nickname.image}
         onClick={() => {
-          playMorseSound(props.morseCode);
+          playMorseSound(props.morseCode, data.stressType);
         }}
       />
       <div className="text-3xl font-semibold mt-20 text-white leading-10">

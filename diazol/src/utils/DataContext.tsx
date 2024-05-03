@@ -1,4 +1,5 @@
 "use client";
+import { UserDataType } from "@/types";
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
 type Data = {

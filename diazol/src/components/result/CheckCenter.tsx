@@ -17,7 +17,7 @@ const CheckCenter = (props: Props) => {
   const lastSubmit = async () => {
     await putUserData(data);
     props.showResult();
-    playMorseSound(props.morseCode);
+    playMorseSound(props.morseCode, data.stressType);
   };
   useEffect(() => {
     setTimeout(() => {
