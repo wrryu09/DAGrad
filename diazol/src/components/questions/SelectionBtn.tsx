@@ -8,8 +8,9 @@ type Props = {
 };
 
 const SelectionBtn = (props: Props) => {
-  const selectedStyle = "h-14 border border-diazolRed rounded-full text-white";
-  const defaultStyle = "h-14 border rounded-full text-midGrey";
+  const selectedStyle =
+    "h-14 border border-diazolRed rounded-full text-white bg-black/60";
+  const defaultStyle = "h-14 border rounded-full text-midGrey bg-white/5";
 
   return (
     <div
@@ -19,14 +20,14 @@ const SelectionBtn = (props: Props) => {
       }}
     >
       <div
-        className={`w-full flex items-center justify-center bg-white/opacity-5 backdrop-blur-md ${
+        className={`w-full flex items-center justify-center backdrop-blur-md ${
           props.selection == props.num ? selectedStyle : defaultStyle
         }`}
       >
         <p className="p-6">{props.text}</p>
       </div>
       <div
-        className={`w-16 bg-white/opacity-5 backdrop-blur-md ${
+        className={`w-16 backdrop-blur-md ${
           props.selection == props.num ? selectedStyle : defaultStyle
         }`}
       ></div>
