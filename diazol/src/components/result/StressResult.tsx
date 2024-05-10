@@ -33,6 +33,9 @@ const StressResult = (props: Props) => {
         autoPlay={true}
         loop={true}
         className="mt-10"
+        onClick={() => {
+          playMorseSound(props.morseCode, data.stressType);
+        }}
       />
       {/* <Image
         width={350}
