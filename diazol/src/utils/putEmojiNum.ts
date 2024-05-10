@@ -1,3 +1,4 @@
+import { UserDataType } from "@/types";
 import { db } from "@/utils/firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
