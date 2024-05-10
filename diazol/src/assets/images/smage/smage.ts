@@ -18,6 +18,8 @@ import high1qr from "./high1qr.png";
 import high2qr from "./high2qr.png";
 import high3qr from "./high3qr.png";
 
+import high3vid from "./high3.mp4";
+
 export const smage = {
   low1: low1,
   low2: low2,
@@ -40,4 +42,8 @@ export const smageQr = {
   high1: high1qr,
   high2: high2qr,
   high3: high3qr,
+};
+
+export const smageVid = {
+  high3: high3vid,
 };
