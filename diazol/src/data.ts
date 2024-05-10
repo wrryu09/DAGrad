@@ -1,3 +1,5 @@
+import { QuestionDataType } from "./types";
+
 export const questions: { [key: string]: QuestionDataType } = {
   type: {
     title: "내 스트레스 유형은?",
