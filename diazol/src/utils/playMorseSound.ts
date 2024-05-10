@@ -17,12 +17,15 @@ export const playMorseSound = (morse: string, type: number) => {
     switch (type) {
       case 1:
         freq = 600;
+        oscillator.type = "triangle";
         break;
       case 2:
         freq = 1200;
+        oscillator.type = "square";
         break;
       case 3:
         freq = 100;
+        oscillator.type = "sine";
         break;
     }
     console.log(freq);
