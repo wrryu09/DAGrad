@@ -26,11 +26,6 @@ const SelectionBtn = (props: Props) => {
       >
         <p className="p-6">{props.text}</p>
       </div>
-      <div
-        className={`w-16 backdrop-blur-md ${
-          props.selection == props.num ? selectedStyle : defaultStyle
-        }`}
-      ></div>
     </div>
   );
 };
