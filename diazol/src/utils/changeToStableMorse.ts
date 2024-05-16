@@ -5,9 +5,9 @@ const changeToStableMorse = async (
   sword: string,
   handleMorseCode: (text: string) => void
 ) => {
+  let stressWord = "";
   if (sword !== "-1") {
     const engRegx = /[a-zA-Z]/;
-    let stressWord = "";
     // 영소문자, 대문자로 이루어진 경우
     if (engRegx.test(sword)) {
       stressWord = await getMorseCode(sword);
@@ -17,10 +17,11 @@ const changeToStableMorse = async (
       const randomStressWord = makeRandomAlphabet(stressWordLen);
       stressWord = await getMorseCode(randomStressWord);
     }
-    handleMorseCode(stressWord);
   } else {
     console.log("error: no stress word stored");
+    stressWord = await getMorseCode("no stress word stored");
   }
+  handleMorseCode(stressWord);
 };
 
 /** 영문 알파벳 아닐 경우 랜덤 알파벳으로 변환 */

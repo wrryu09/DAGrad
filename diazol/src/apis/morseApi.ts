@@ -8,6 +8,7 @@ export const getMorseCode = async (text: string) => {
     );
     return morseCode.data.contents.translated;
   } catch (e) {
-    console.log(e);
+    console.log(e, "error occured");
+    return ". .-. .-. --- .-. / --- -.-. -.-. ..- .-. . -..";
   }
 };
