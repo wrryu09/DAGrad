@@ -47,9 +47,14 @@ const StressResult = (props: Props) => {
       /> */}
       <div className="text-3xl font-semibold mt-20 text-white leading-10">
         <h1>{nickname.name}</h1>
-        <p>{nickname.content}</p>
-        <p>당신의 스트레스 점수는</p>
-        <p>{data.choiceScore}점</p>
+        {/* 점수 바 */}
+        <div className="w-[160px] h-fit relative flex items-center mt-10 mb-20">
+          <div className="w-full h-[1px] bg-white absolute" />
+          <div
+            className={`w-2 h-2 rounded-full bg-black border border-diazolRed absolute`}
+            style={{ left: `${data.choiceScore * 4}px` }}
+          />
+        </div>
       </div>
 
       {stressInfo.map((info) => (
