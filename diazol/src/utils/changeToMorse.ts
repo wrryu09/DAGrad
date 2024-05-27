@@ -6,23 +6,17 @@ const changeToMorse = (
   sword: string,
   handleMorseCode: (text: string) => void
 ) => {
+  let morseStressCode = "..- -. -.- -. --- .-- -.";
   if (sword !== "-1") {
     const romanStressWord = convert(sword);
     console.log(romanStressWord);
-
     if (romanStressWord) {
-      // unknown
-      let morseStressCode = "..- -. -.- -. --- .-- -.";
-      try {
-        morseStressCode = getMorseCode(romanStressWord);
-      } catch (error) {
-        console.log(error);
-      }
-      handleMorseCode(morseStressCode);
+      morseStressCode = getMorseCode(romanStressWord);
     }
   } else {
     console.log("error: no stress word stored");
   }
+  handleMorseCode(morseStressCode);
 };
 
 export default changeToMorse;
