@@ -20,9 +20,9 @@ const Page = (props: Props) => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-9/12 flex flex-col items-center text-center">
-        <div className="text-white my-10">
+        <div className="text-white my-10 whitespace-pre-wrap">
           <h1>Part2</h1>
-          <p>요즘 당신을 가장 스트레스 받게 하는 한 가지는 무엇인가요?</p>
+          <p>요즘 당신을 가장{"\n"}스트레스 받게 하는 것은 무엇인가요?</p>
         </div>
         <TextInput onChange={onChange} />
         <MainBtn
