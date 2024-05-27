@@ -1,6 +1,4 @@
 "use client";
-import BackGroundEmoji from "@/components/common/BackGroundEmoji";
-import TopBar from "@/components/common/TopBar";
 import Question from "@/components/questions/Question";
 import { questions } from "@/data";
 import { useData } from "@/utils/DataContext";
@@ -16,9 +14,7 @@ const Type = (props: Props) => {
     setData(newData);
   };
   return (
-    <div>
-      <TopBar />
-      <BackGroundEmoji />
+    <>
       <Question
         title={questions.type.title}
         content={questions.type.content}
@@ -26,7 +22,7 @@ const Type = (props: Props) => {
         onScoreReceived={setTypeData}
         route="/survey/q"
       />
-    </div>
+    </>
   );
 };
 

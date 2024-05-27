@@ -1,8 +1,6 @@
 "use client";
 import { emojis } from "@/assets/emojis/emojis";
-import BackGroundEmoji from "@/components/common/BackGroundEmoji";
 import MainBtn from "@/components/common/MainBtn";
-import TopBar from "@/components/common/TopBar";
 import Emoji from "@/components/questions/Emoji";
 import useSetContextData from "@/utils/useSetContextData";
 import React from "react";
@@ -20,8 +18,6 @@ const Page = (props: Props) => {
 
   return (
     <div className="flex flex-col items-center">
-      <TopBar />
-      <BackGroundEmoji />
       <div className="w-9/12 flex flex-col items-center text-center">
         <div className="text-white my-10">
           <h1>Part2</h1>

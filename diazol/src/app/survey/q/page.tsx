@@ -1,6 +1,4 @@
 "use client";
-import BackGroundEmoji from "@/components/common/BackGroundEmoji";
-import TopBar from "@/components/common/TopBar";
 import Question from "@/components/questions/Question";
 import { questions } from "@/data";
 import { UserDataType } from "@/types";
@@ -29,9 +27,7 @@ const Page = (props: Props) => {
     });
   };
   return (
-    <div>
-      <TopBar />
-      <BackGroundEmoji />
+    <>
       <Question
         Qnum={phase}
         title={questions["Q" + phase].title}
@@ -40,7 +36,7 @@ const Page = (props: Props) => {
         increasePhase={increasePhase}
         onScoreReceived={handleScoreIncrease}
       />
-    </div>
+    </>
   );
 };
 
