@@ -22,8 +22,8 @@ const Page = (props: Props) => {
   };
 
   useEffect(() => {
-    // changeToMorse(data.stressWord, handleMorseCode);
-    changeToStableMorse(data.stressWord, handleMorseCode);
+    changeToMorse(data.stressWord, handleMorseCode);
+    // changeToStableMorse(data.stressWord, handleMorseCode);
   }, []);
 
   return (

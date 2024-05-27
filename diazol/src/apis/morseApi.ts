@@ -1,14 +1,16 @@
-import axios from "axios";
-
 /** get morse code from english text */
-export const getMorseCode = async (text: string) => {
+export const getMorseCode = (text: string) => {
+  const { encode } = require("morsee");
   try {
-    const morseCode = await axios.get(
-      `https://api.funtranslations.com/translate/morse.json?text=${text}`
-    );
-    return morseCode.data.contents.translated;
+    let morseCode = encode(text.trim());
+    morseCode = morseCode.trim();
+    if (morseCode.length < 1) {
+      console.log("dummy morse");
+      morseCode = ". .-. .-. --- .-. --";
+    }
+    return morseCode;
   } catch (e) {
     console.log(e, "error occured");
-    return ". .-. .-. --- .-. / --- -.-. -.-. ..- .-. . -..";
+    return ". .-. .-. --- .-. --- -.-. -.-. ..- .-. . -..";
   }
 };
