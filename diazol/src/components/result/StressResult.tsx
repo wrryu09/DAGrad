@@ -8,6 +8,7 @@ import { NickNameType } from "@/types";
 import { smageQr } from "@/assets/images/smage/smage";
 import MainBtn from "../common/MainBtn";
 import { playMorseSound } from "@/utils/playMorseSound";
+import Card from "./Card";
 import Spinner from "../common/\bSpinner";
 
 type Props = {
@@ -31,7 +32,7 @@ const StressResult = (props: Props) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center text-center items-center">
+    <div className="flex flex-col justify-center text-center items-center text-white">
       <Image
         alt="smage"
         src={nickname.image}
@@ -54,6 +55,8 @@ const StressResult = (props: Props) => {
           />
         </div>
       </div>
+
+      <Card />
 
       {stressInfo.map((info) => (
         <InfoBox
