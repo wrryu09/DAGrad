@@ -9,6 +9,7 @@ import { smageQr } from "@/assets/images/smage/smage";
 import MainBtn from "../common/MainBtn";
 import { playMorseSound } from "@/utils/playMorseSound";
 import Spinner from "../common/\bSpinner";
+import Card from "./Card";
 
 type Props = {
   morseCode: string;
@@ -54,6 +55,8 @@ const StressResult = (props: Props) => {
           />
         </div>
       </div>
+
+      <Card />
 
       {stressInfo.map((info) => (
         <InfoBox
