@@ -57,9 +57,6 @@ const StressResult = (props: Props) => {
       </div>
 
       <Card />
-      <p className="whitespace-pre-wrap mb-10">
-        스미지 유형에 맞는 {"\n"}카드를 한 장씩 가져가 주세요!
-      </p>
 
       {stressInfo.map((info) => (
         <InfoBox
