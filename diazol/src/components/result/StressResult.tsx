@@ -5,7 +5,7 @@ import { useData } from "@/utils/DataContext";
 import Image from "next/image";
 import { getStressNickName } from "@/utils/getStressNickname";
 import { NickNameType } from "@/types";
-import { smage, smageQr, smageVid } from "@/assets/images/smage/smage";
+import { smage, smageQr } from "@/assets/images/smage/smage";
 import MainBtn from "../common/MainBtn";
 import { playMorseSound } from "@/utils/playMorseSound";
 
@@ -18,7 +18,7 @@ const StressResult = (props: Props) => {
   const [nickname, setNickname] = useState<NickNameType>({
     name: "Prestissimo",
     content: "",
-    image: smage.high1,
+    image: smage.low1,
     qrImage: smageQr.high1,
   });
 
@@ -28,23 +28,15 @@ const StressResult = (props: Props) => {
 
   return (
     <div className="flex flex-col justify-center text-center items-center">
-      <video
-        src={smageVid.high3}
-        autoPlay={true}
-        loop={true}
-        className="mt-10"
+      <Image
+        alt="smage"
+        src={nickname.image}
+        unoptimized
+        className="w-full"
         onClick={() => {
           playMorseSound(props.morseCode, data.stressType);
         }}
       />
-      {/* <Image
-        width={350}
-        alt="smage"
-        src={nickname.image}
-        onClick={() => {
-          playMorseSound(props.morseCode, data.stressType);
-        }}
-      /> */}
       <div className="text-3xl font-semibold mt-20 text-white leading-10">
         <h1>{nickname.name}</h1>
         {/* 점수 바 */}
