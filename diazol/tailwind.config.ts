@@ -15,7 +15,7 @@ const config: Config = {
       },
       keyframes: {
         moveRight: {
-          "0%": { transform: "translate(-100%)" },
+          "0%": { transform: "translate(-150%)" },
           "100%": { transform: "translate(150%)" },
         },
         rotate: {
