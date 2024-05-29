@@ -8,10 +8,10 @@ const Card = (props: Props) => {
   const { scrollYProgress } = useScroll({
     target: cardSectionRef,
   });
-  const rotateY = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const rotateY = useTransform(scrollYProgress, [0, 1], [0, 360]);
   return (
     <div
-      className="h-[60rem] flex flex-col justify-center gap-32"
+      className="h-[50rem] flex flex-col justify-center gap-32"
       ref={cardSectionRef}
     >
       <div className="w-10/12 relative flip-card">
