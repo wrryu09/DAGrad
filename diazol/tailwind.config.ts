@@ -15,8 +15,8 @@ const config: Config = {
       },
       keyframes: {
         moveRight: {
-          "0%": { transform: "translate(-150%)" },
-          "100%": { transform: "translate(150%)" },
+          "0%": { transform: "translate(-1000%)" },
+          "100%": { transform: "translate(500%)" },
         },
         rotate: {
           "0%": { transform: "rotate(0deg)" },
@@ -24,7 +24,7 @@ const config: Config = {
         },
       },
       animation: {
-        moveMorse: "moveRight 4s linear 1",
+        moveMorse: "moveRight 3s linear 1",
         rotateSpinner: "rotate 3s linear infinite",
       },
       colors: {
