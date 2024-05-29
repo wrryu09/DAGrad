@@ -9,7 +9,7 @@ export type QuestionDataType = {
 export type NickNameType = {
   name: string;
   content: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   qrImage: StaticImageData;
 };
 

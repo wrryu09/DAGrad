@@ -5,9 +5,10 @@ import { useData } from "@/utils/DataContext";
 import Image from "next/image";
 import { getStressNickName } from "@/utils/getStressNickname";
 import { NickNameType } from "@/types";
-import { smage, smageQr } from "@/assets/images/smage/smage";
+import { smageQr } from "@/assets/images/smage/smage";
 import MainBtn from "../common/MainBtn";
 import { playMorseSound } from "@/utils/playMorseSound";
+import Spinner from "../common/\bSpinner";
 
 type Props = {
   morseCode: string;
@@ -18,25 +19,31 @@ const StressResult = (props: Props) => {
   const [nickname, setNickname] = useState<NickNameType>({
     name: "Prestissimo",
     content: "",
-    image: smage.low1,
+    image: "",
     qrImage: smageQr.high1,
   });
-
+  const [isLoading, setIsLoading] = useState(true);
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
   useEffect(() => {
     getStressNickName(setNickname, data.choiceScore, data.stressType);
   }, []);
 
   return (
     <div className="flex flex-col justify-center text-center items-center">
+      {isLoading && <Spinner />}
       <Image
         alt="smage"
         src={nickname.image}
         unoptimized
         className="w-full"
+        onLoad={handleImageLoad}
         onClick={() => {
           playMorseSound(props.morseCode, data.stressType);
         }}
       />
+
       <div className="text-3xl font-semibold mt-20 text-white leading-10">
         <h1>{nickname.name}</h1>
         {/* 점수 바 */}
