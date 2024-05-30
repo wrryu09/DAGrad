@@ -33,17 +33,16 @@ const StressResult = (props: Props) => {
 
   return (
     <div className="flex flex-col justify-center text-center items-center text-white">
+      {isLoading && <Spinner />}
       <Image
         alt="smage"
         src={nickname.image}
-        unoptimized
-        className="w-full"
+        className={`w-full ${isLoading ? "hidden" : ""}`}
         onLoad={handleImageLoad}
         onClick={() => {
           playMorseSound(props.morseCode, data.stressType);
         }}
       />
-      {(isLoading || nickname.image === "") && <Spinner />}
       <div className="text-3xl font-semibold mt-20 text-white leading-10">
         <h1>{nickname.name}</h1>
         {/* 점수 바 */}
