@@ -37,7 +37,7 @@ const EmoSurvey = ({ handleEmoji, onNext }: Props) => {
         <MainBtn
           text="다음"
           available={mySelection !== -1 ? true : false}
-          onclick={() => {
+          onClick={() => {
             handleEmoji(mySelection);
             onNext();
           }}

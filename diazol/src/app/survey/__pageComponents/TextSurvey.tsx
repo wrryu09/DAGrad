@@ -25,7 +25,7 @@ const TextSurvey = ({ handleText, onNext }: Props) => {
         <MainBtn
           text="다음"
           available={mySelection !== "" ? true : false}
-          onclick={() => {
+          onClick={() => {
             handleText(mySelection);
             onNext();
           }}

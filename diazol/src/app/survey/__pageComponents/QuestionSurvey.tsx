@@ -1,4 +1,5 @@
 "use client";
+import MainBtn from "@/components/common/MainBtn";
 import Question from "@/components/questions/Question";
 import { questions } from "@/data";
 import { UserDataType } from "@/types";
@@ -24,8 +25,13 @@ const QuestionSurvey = ({ onNext }: Props) => {
         title={questions["Q" + phase].title}
         content={questions["Q" + phase].content}
         choice={questions["Q" + phase].choice}
-        increasePhase={increasePhase}
-        onScoreReceived={handleScoreIncrease}
+        MainBtnChildren={
+          phase === 10 ? (
+            <MainBtn text="다음" available={true} onClick={onNext} />
+          ) : (
+            <MainBtn text="다음" available={true} onClick={increasePhase} />
+          )
+        }
       />
     </>
   );

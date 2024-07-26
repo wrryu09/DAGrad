@@ -3,17 +3,23 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 
-type Props = {
+type MainBtnProps = {
   text: string;
   route?: string;
   available?: boolean;
   onScoreReceived?: (score: number) => void;
   score?: number;
-  increasePhase?: () => void;
-  onclick?: () => void;
+  onClick?: () => void;
 };
 
-const MainBtn = (props: Props) => {
+const MainBtn = ({
+  text,
+  route,
+  available,
+  onScoreReceived,
+  score,
+  onClick,
+}: MainBtnProps) => {
   const router = useRouter();
   const availableStyle =
     "text-white border-diazolRed bg-black/60 border-[0.5px]";
@@ -22,32 +28,27 @@ const MainBtn = (props: Props) => {
   return (
     <div
       className={`fixed w-10/12 border rounded-full max-w-[500px] bottom-16 py-3 flex items-center justify-center font-semibold backdrop-blur-md ${
-        props.available === false ? unavailableStyle : availableStyle
+        available === false ? unavailableStyle : availableStyle
       }`}
       onClick={() => {
-        if (props.available) {
+        if (available) {
           // route to page
-          if (props.route) {
-            router.push(props.route);
+          if (route) {
+            router.push(route);
           }
 
           // set score per question
-          if (props.onScoreReceived && props.score) {
-            props.onScoreReceived(props.score);
+          if (onScoreReceived && score) {
+            onScoreReceived(score);
           }
 
-          // increase phase at survey/q
-          if (props.increasePhase) {
-            props.increasePhase();
-          }
-
-          if (props.onclick) {
-            props.onclick();
+          if (onClick) {
+            onClick();
           }
         }
       }}
     >
-      <p>{props.text}</p>
+      <p>{text}</p>
     </div>
   );
 };

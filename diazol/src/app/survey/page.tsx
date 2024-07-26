@@ -10,7 +10,7 @@ import ResultPage from "./__pageComponents/ResultPage";
 type Props = {};
 
 const Page = (props: Props) => {
-  const [step, setStep] = useState("question");
+  const [step, setStep] = useState("type");
   const [data, setData] = useState<UserDataType>({
     stressType: -1,
     choiceScore: -1,

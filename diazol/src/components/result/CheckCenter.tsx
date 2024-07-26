@@ -32,7 +32,7 @@ const CheckCenter = ({ userData, showResult, morseCode }: Props) => {
             <p>중앙에서</p>
             <p>결과를 확인하세요!</p>
           </h1>
-          <MainBtn text="확인 !" available={true} onclick={lastSubmit} />
+          <MainBtn text="확인 !" available={true} onClick={lastSubmit} />
         </div>
       ) : (
         <div className="h-dvh flex justify-center items-center">
