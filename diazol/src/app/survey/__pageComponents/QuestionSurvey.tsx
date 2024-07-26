@@ -4,12 +4,12 @@ import Question from "@/components/questions/Question";
 import { questions } from "@/data";
 import React, { useState } from "react";
 
-type Props = {
+type QuestionSurveyProps = {
   handleStressScore: (score: number) => void;
   onNext: () => void;
 };
 
-const QuestionSurvey = ({ handleStressScore, onNext }: Props) => {
+const QuestionSurvey = ({ handleStressScore, onNext }: QuestionSurveyProps) => {
   const [score, setScore] = useState(0);
   const [currentSelection, setCurrentSelection] = useState(-1);
   const [phase, setPhase] = useState(1);
@@ -43,24 +43,22 @@ const QuestionSurvey = ({ handleStressScore, onNext }: Props) => {
   };
 
   return (
-    <>
-      <Question
-        title={questions["Q" + phase].title}
-        content={questions["Q" + phase].content}
-        currentSelection={currentSelection}
-        handleCurrentSelection={handleCurrentSelection}
-        MainBtnChildren={
-          <MainBtn
-            text="다음"
-            available={currentSelection !== -1}
-            onClick={() => {
-              phase === 10 && onNext();
-              increasePhase();
-            }}
-          />
-        }
-      />
-    </>
+    <Question
+      title={questions["Q" + phase].title}
+      content={questions["Q" + phase].content}
+      currentSelection={currentSelection}
+      handleCurrentSelection={handleCurrentSelection}
+      MainBtnChildren={
+        <MainBtn
+          text="다음"
+          available={currentSelection !== -1}
+          onClick={() => {
+            phase === 10 && onNext();
+            increasePhase();
+          }}
+        />
+      }
+    />
   );
 };
 
