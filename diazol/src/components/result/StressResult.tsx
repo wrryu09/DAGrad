@@ -9,6 +9,7 @@ import MainBtn from "../common/MainBtn";
 import { playMorseSound } from "@/utils/playMorseSound";
 import Card from "./Card";
 import Spinner from "../common/\bSpinner";
+import { useRouter } from "next/navigation";
 
 type Props = {
   userData: UserDataType;
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const StressResult = ({ userData, morseCode }: Props) => {
+  const router = useRouter();
   const [nickname, setNickname] = useState<NickNameType>({
     name: "Prestissimo",
     content: "",
@@ -71,7 +73,13 @@ const StressResult = ({ userData, morseCode }: Props) => {
         className="mt-20 mb-60"
       />
 
-      <MainBtn text="메인 화면으로 돌아가기" route="/" available={true} />
+      <MainBtn
+        text="메인 화면으로 돌아가기"
+        onClick={() => {
+          router.push("/");
+        }}
+        available={true}
+      />
     </div>
   );
 };
