@@ -11,11 +11,16 @@ type Props = {
 
 const QuestionSurvey = ({ onNext }: Props) => {
   const [score, setScore] = useState(0);
+  const [currentSelection, setCurrentSelection] = useState(-1);
   const [phase, setPhase] = useState(1);
   const increasePhase = () => {
     if (phase + 1 <= 10) setPhase(phase + 1);
+    setCurrentSelection(-1);
   };
-  const handleScoreIncrease = (sc: number) => {
+  const handleCurrentSelection = (selection: number) => {
+    setCurrentSelection(selection);
+  };
+  const handleScore = (sc: number) => {
     setScore(score + sc);
   };
   return (
@@ -24,7 +29,8 @@ const QuestionSurvey = ({ onNext }: Props) => {
         Qnum={phase}
         title={questions["Q" + phase].title}
         content={questions["Q" + phase].content}
-        choice={questions["Q" + phase].choice}
+        currentSelection={currentSelection}
+        handleCurrentSelection={handleCurrentSelection}
         MainBtnChildren={
           phase === 10 ? (
             <MainBtn text="다음" available={true} onClick={onNext} />

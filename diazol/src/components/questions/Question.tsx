@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SelectionBtn from "./SelectionBtn";
 import SelectionBtnGroup from "./SelectionBtnGroup";
-import { fiveSelectionBtnContent, typeSelectionBtnContent } from "@/data";
+import { fiveSelectionBtnContent } from "@/data";
 
 type QuestionProps = {
   Qnum?: number;
   title: string;
   content: string;
-  choice: number;
+  currentSelection: number;
+  handleCurrentSelection: (selection: number) => void;
   MainBtnChildren: React.ReactNode;
 };
 
@@ -15,16 +16,15 @@ const Question = ({
   Qnum,
   title,
   content,
-  choice,
+  currentSelection,
+  handleCurrentSelection,
   MainBtnChildren,
 }: QuestionProps) => {
   const order = [1, 2, 3, 6, 9, 10];
   const [val, setVal] = useState(-1);
-  const [selection, setSelection] = useState(-1);
 
   // reset selection on Qnum change
   useEffect(() => {
-    setSelection(-1);
     setVal(-1);
   }, [Qnum]);
 
@@ -32,14 +32,14 @@ const Question = ({
   useEffect(() => {
     if (Qnum) {
       if (order.includes(Qnum)) {
-        setVal(selection);
+        setVal(currentSelection);
       } else {
-        setVal(4 - selection);
+        setVal(4 - currentSelection);
       }
     } else {
-      setVal(selection);
+      setVal(currentSelection);
     }
-  }, [selection, Qnum]);
+  }, [currentSelection, Qnum]);
 
   return (
     <div className="flex flex-col text-white break-keep whitespace-pre-wrap">
@@ -53,8 +53,8 @@ const Question = ({
               <SelectionBtn
                 key={obj.content + obj.num}
                 text={obj.content}
-                selection={selection}
-                setSelection={setSelection}
+                selection={currentSelection}
+                setSelection={handleCurrentSelection}
                 num={obj.num}
               />
             );
