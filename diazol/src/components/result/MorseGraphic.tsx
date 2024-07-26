@@ -1,12 +1,11 @@
-import React from "react";
 import MorseDot from "./MorseDot";
 
-type Props = {
+type MorseGraphicProps = {
   morseCode: string;
 };
 
-const MorseGraphic = (props: Props) => {
-  const samleMorseCodeArr = props.morseCode.split("");
+const MorseGraphic = ({ morseCode }: MorseGraphicProps) => {
+  const samleMorseCodeArr = morseCode.split("");
   return (
     <div className="h-3/5 w-full flex justify-center overflow-hidden">
       <div className="h-full w-fit flex flex-col flex-wrap gap-6 justify-center animate-moveMorse">

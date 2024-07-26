@@ -1,9 +1,8 @@
 import React from "react";
 import bgImg from "../../assets/images/bgEmoji.png";
 import Image from "next/image";
-type Props = {};
 
-const BackGroundEmoji = (props: Props) => {
+const BackGroundEmoji = () => {
   return (
     <div className="absolute w-full h-full overflow-clip -z-10">
       <Image

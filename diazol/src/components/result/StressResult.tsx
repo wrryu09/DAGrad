@@ -1,22 +1,23 @@
 import { stressInfo } from "@/data";
 import React, { useEffect, useState } from "react";
 import InfoBox from "./InfoBox";
-import { useData } from "@/utils/DataContext";
 import Image from "next/image";
 import { getStressNickName } from "@/utils/getStressNickname";
-import { NickNameType } from "@/types";
+import { NickNameType, UserDataType } from "@/types";
 import { smageQr } from "@/assets/images/smage/smage";
 import MainBtn from "../common/MainBtn";
 import { playMorseSound } from "@/utils/playMorseSound";
 import Card from "./Card";
 import Spinner from "../common/\bSpinner";
+import { useRouter } from "next/navigation";
 
 type Props = {
+  userData: UserDataType;
   morseCode: string;
 };
 
-const StressResult = (props: Props) => {
-  const { data } = useData();
+const StressResult = ({ userData, morseCode }: Props) => {
+  const router = useRouter();
   const [nickname, setNickname] = useState<NickNameType>({
     name: "Prestissimo",
     content: "",
@@ -28,7 +29,7 @@ const StressResult = (props: Props) => {
     setIsLoading(false);
   };
   useEffect(() => {
-    getStressNickName(setNickname, data.choiceScore, data.stressType);
+    getStressNickName(setNickname, userData.choiceScore, userData.stressType);
   }, []);
 
   return (
@@ -40,7 +41,7 @@ const StressResult = (props: Props) => {
         className={`w-full ${isLoading ? "hidden" : ""}`}
         onLoad={handleImageLoad}
         onClick={() => {
-          playMorseSound(props.morseCode, data.stressType);
+          playMorseSound(morseCode, userData.stressType);
         }}
       />
       <div className="text-3xl font-semibold mt-20 text-white leading-10">
@@ -50,7 +51,7 @@ const StressResult = (props: Props) => {
           <div className="w-full h-[1px] bg-white absolute" />
           <div
             className={`w-2 h-2 rounded-full bg-black border border-diazolRed absolute`}
-            style={{ left: `${data.choiceScore * 4}px` }}
+            style={{ left: `${userData.choiceScore * 4}px` }}
           />
         </div>
       </div>
@@ -72,7 +73,13 @@ const StressResult = (props: Props) => {
         className="mt-20 mb-60"
       />
 
-      <MainBtn text="메인 화면으로 돌아가기" route="/" available={true} />
+      <MainBtn
+        text="메인 화면으로 돌아가기"
+        onClick={() => {
+          router.push("/");
+        }}
+        available={true}
+      />
     </div>
   );
 };

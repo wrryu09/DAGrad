@@ -3,7 +3,6 @@ import { StaticImageData } from "next/image";
 export type QuestionDataType = {
   title: string;
   content: string;
-  choice: number;
 };
 
 export type NickNameType = {

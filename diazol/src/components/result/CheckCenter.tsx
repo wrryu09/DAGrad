@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import MainBtn from "../common/MainBtn";
-import { useData } from "@/utils/DataContext";
 import { putUserData } from "@/utils/putEmojiNum";
 import MorseGraphic from "./MorseGraphic";
 import { playMorseSound } from "@/utils/playMorseSound";
+import { UserDataType } from "@/types";
 
-type Props = {
+type CheckCenterProps = {
+  userData: UserDataType;
   showResult: () => void;
   morseCode: string;
 };
 
-const CheckCenter = (props: Props) => {
-  const { data } = useData();
+const CheckCenter = ({ userData, showResult, morseCode }: CheckCenterProps) => {
   const [seeResult, setSeeResult] = useState(false);
 
   const lastSubmit = async () => {
-    await putUserData(data);
-    props.showResult();
-    playMorseSound(props.morseCode, data.stressType);
+    await putUserData(userData);
+    showResult();
+    playMorseSound(morseCode, userData.stressType);
   };
   useEffect(() => {
     setTimeout(() => {
@@ -28,15 +28,15 @@ const CheckCenter = (props: Props) => {
     <div>
       {seeResult ? (
         <div className="flex justify-center text-center">
-          <h1 className="text-3xl font-semibold mt-20 text-white leading-10">
-            <p>중앙에서</p>
-            <p>결과를 확인하세요!</p>
-          </h1>
-          <MainBtn text="확인 !" available={true} onclick={lastSubmit} />
+          <div className="text-3xl font-semibold mt-20 text-white leading-10">
+            <h1>중앙에서</h1>
+            <h1>결과를 확인하세요!</h1>
+          </div>
+          <MainBtn text="확인 !" available={true} onClick={lastSubmit} />
         </div>
       ) : (
         <div className="h-dvh flex justify-center items-center">
-          <MorseGraphic morseCode={props.morseCode} />
+          <MorseGraphic morseCode={morseCode} />
         </div>
       )}
     </div>
