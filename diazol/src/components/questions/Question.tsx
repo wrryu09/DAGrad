@@ -47,37 +47,19 @@ const Question = ({
         <h3 className="text-3xl font-semibold mb-3">{title}</h3>
         <p className="text-lg">{content}</p>
 
-        {choice === 5 ? (
-          // select buttons when the question has 5 choices
-          <SelectionBtnGroup>
-            {fiveSelectionBtnContent.map((obj) => {
-              return (
-                <SelectionBtn
-                  key={obj.content + obj.num}
-                  text={obj.content}
-                  selection={selection}
-                  setSelection={setSelection}
-                  num={obj.num}
-                />
-              );
-            })}
-          </SelectionBtnGroup>
-        ) : (
-          // select buttons when the question has 3 choices
-          <SelectionBtnGroup>
-            {typeSelectionBtnContent.map((obj) => {
-              return (
-                <SelectionBtn
-                  key={obj.content + obj.num}
-                  text={obj.content}
-                  selection={selection}
-                  setSelection={setSelection}
-                  num={obj.num}
-                />
-              );
-            })}
-          </SelectionBtnGroup>
-        )}
+        <SelectionBtnGroup>
+          {fiveSelectionBtnContent.map((obj) => {
+            return (
+              <SelectionBtn
+                key={obj.content + obj.num}
+                text={obj.content}
+                selection={selection}
+                setSelection={setSelection}
+                num={obj.num}
+              />
+            );
+          })}
+        </SelectionBtnGroup>
 
         {/* MainBtn children 으로 받기 */}
         <div className="flex justify-center">{MainBtnChildren}</div>
