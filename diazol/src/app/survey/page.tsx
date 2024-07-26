@@ -17,6 +17,9 @@ const Page = (props: Props) => {
     emojiNum: -1,
     stressWord: "",
   });
+  const handleStressType = (stressType: number) => {
+    setData({ ...data, stressType: stressType });
+  };
   const handleEmoji = (emojiNum: number) => {
     setData({ ...data, emojiNum: emojiNum });
   };
@@ -29,7 +32,14 @@ const Page = (props: Props) => {
   }, [data]);
   return (
     <>
-      {step === "type" && <TypeSurvey />}
+      {step === "type" && (
+        <TypeSurvey
+          handleStressType={handleStressType}
+          onNext={() => {
+            setStep("question");
+          }}
+        />
+      )}
       {step === "question" && (
         <QuestionSurvey
           onNext={() => {

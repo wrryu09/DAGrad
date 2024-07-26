@@ -3,9 +3,12 @@ import Question from "@/components/questions/Question";
 import { questions } from "@/data";
 import React from "react";
 
-type Props = {};
+type TypeSurveyProps = {
+  handleStressType: (stressType: number) => void;
+  onNext: () => void;
+};
 
-const TypeSurvey = (props: Props) => {
+const TypeSurvey = ({ handleStressType, onNext }: TypeSurveyProps) => {
   return (
     <>
       <Question
