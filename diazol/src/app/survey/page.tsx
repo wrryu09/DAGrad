@@ -1,15 +1,13 @@
 "use client";
 import { UserDataType } from "@/types";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import EmoSurvey from "./__pageComponents/EmoSurvey";
 import QuestionSurvey from "./__pageComponents/QuestionSurvey";
 import TextSurvey from "./__pageComponents/TextSurvey";
 import TypeSurvey from "./__pageComponents/TypeSurvey";
 import ResultPage from "./__pageComponents/ResultPage";
 
-type Props = {};
-
-const Page = (props: Props) => {
+const Page = () => {
   const [step, setStep] = useState("type");
   const [data, setData] = useState<UserDataType>({
     stressType: -1,
@@ -30,9 +28,7 @@ const Page = (props: Props) => {
   const handleText = (txt: string) => {
     setData({ ...data, stressWord: txt });
   };
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
   return (
     <>
       {step === "type" && (

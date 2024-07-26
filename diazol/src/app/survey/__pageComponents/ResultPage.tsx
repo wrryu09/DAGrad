@@ -26,8 +26,7 @@ const ResultPage = ({ userData }: Props) => {
   }, []);
 
   return (
-    <div>
-      <TopBar />
+    <>
       {showRes ? (
         <StressResult userData={userData} morseCode={morseCode} />
       ) : (
@@ -45,7 +44,7 @@ const ResultPage = ({ userData }: Props) => {
           )}
         </>
       )}
-    </div>
+    </>
   );
 };
 

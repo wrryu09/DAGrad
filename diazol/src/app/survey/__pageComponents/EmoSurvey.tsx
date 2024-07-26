@@ -4,12 +4,12 @@ import MainBtn from "@/components/common/MainBtn";
 import Emoji from "@/components/questions/Emoji";
 import React, { useState } from "react";
 
-type Props = {
+type EmoSurveyProps = {
   handleEmoji: (emojiNum: number) => void;
   onNext: () => void;
 };
 
-const EmoSurvey = ({ handleEmoji, onNext }: Props) => {
+const EmoSurvey = ({ handleEmoji, onNext }: EmoSurveyProps) => {
   const emojiArr = Object.entries(emojis);
   const [mySelection, setMySelection] = useState(-1);
   const selectEmoji = (num: number) => {

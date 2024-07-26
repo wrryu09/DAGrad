@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "./card.css";
-type Props = {};
 
-const Card = (props: Props) => {
+const Card = () => {
   const cardSectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardSectionRef,

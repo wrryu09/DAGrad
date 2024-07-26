@@ -1,14 +1,14 @@
 "use client";
 import MainBtn from "@/components/common/MainBtn";
 import TextInput from "@/components/questions/TextInput";
-import React, { useState } from "react";
+import { useState } from "react";
 
-type Props = {
+type TextSurveyProps = {
   handleText: (txt: string) => void;
   onNext: () => void;
 };
 
-const TextSurvey = ({ handleText, onNext }: Props) => {
+const TextSurvey = ({ handleText, onNext }: TextSurveyProps) => {
   const [mySelection, setSelection] = useState("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelection(e.target.value);
