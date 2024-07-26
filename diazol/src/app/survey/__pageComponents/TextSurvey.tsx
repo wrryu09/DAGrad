@@ -1,20 +1,17 @@
 "use client";
 import MainBtn from "@/components/common/MainBtn";
 import TextInput from "@/components/questions/TextInput";
-import useSetContextData from "@/utils/useSetContextData";
-import React from "react";
+import React, { useState } from "react";
 
-type Props = {};
+type Props = {
+  handleText: (txt: string) => void;
+  onNext: () => void;
+};
 
-const Page = (props: Props) => {
-  const { mySelection, setSelection, setContextData } =
-    useSetContextData("stressWord");
-
+const TextSurvey = ({ handleText, onNext }: Props) => {
+  const [mySelection, setSelection] = useState("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelection(e.target.value);
-    if (e.target.value == "") {
-      setSelection(-1);
-    }
   };
 
   return (
@@ -27,13 +24,15 @@ const Page = (props: Props) => {
         <TextInput onChange={onChange} />
         <MainBtn
           text="다음"
-          available={mySelection !== -1 ? true : false}
-          onclick={setContextData}
-          route="/result"
+          available={mySelection !== "" ? true : false}
+          onclick={() => {
+            handleText(mySelection);
+            onNext();
+          }}
         />
       </div>
     </div>
   );
 };
 
-export default Page;
+export default TextSurvey;

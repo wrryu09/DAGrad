@@ -7,11 +7,7 @@ export default function Home() {
     <div className="flex flex-col items-center">
       <Image src={bpm_logo} alt="logo" priority className="mt-32 w-40 h-auto" />
       <div className="flex justify-center">
-        <MainBtn
-          text="나의 BPM 체크하기"
-          available={true}
-          route="survey/type"
-        />
+        <MainBtn text="나의 BPM 체크하기" available={true} route="survey" />
       </div>
     </div>
   );
