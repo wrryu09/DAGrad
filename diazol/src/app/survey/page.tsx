@@ -20,6 +20,9 @@ const Page = (props: Props) => {
   const handleStressType = (stressType: number) => {
     setData({ ...data, stressType: stressType });
   };
+  const handleStressScore = (score: number) => {
+    setData({ ...data, choiceScore: score });
+  };
   const handleEmoji = (emojiNum: number) => {
     setData({ ...data, emojiNum: emojiNum });
   };
@@ -42,6 +45,7 @@ const Page = (props: Props) => {
       )}
       {step === "question" && (
         <QuestionSurvey
+          handleStressScore={handleStressScore}
           onNext={() => {
             setStep("emo");
           }}

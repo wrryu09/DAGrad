@@ -5,21 +5,11 @@ import React from "react";
 
 type MainBtnProps = {
   text: string;
-  route?: string;
   available?: boolean;
-  onScoreReceived?: (score: number) => void;
-  score?: number;
   onClick?: () => void;
 };
 
-const MainBtn = ({
-  text,
-  route,
-  available,
-  onScoreReceived,
-  score,
-  onClick,
-}: MainBtnProps) => {
+const MainBtn = ({ text, available, onClick }: MainBtnProps) => {
   const router = useRouter();
   const availableStyle =
     "text-white border-diazolRed bg-black/60 border-[0.5px]";
@@ -31,21 +21,7 @@ const MainBtn = ({
         available === false ? unavailableStyle : availableStyle
       }`}
       onClick={() => {
-        if (available) {
-          // route to page
-          if (route) {
-            router.push(route);
-          }
-
-          // set score per question
-          if (onScoreReceived && score) {
-            onScoreReceived(score);
-          }
-
-          if (onClick) {
-            onClick();
-          }
-        }
+        available && onClick && onClick();
       }}
     >
       <p>{text}</p>

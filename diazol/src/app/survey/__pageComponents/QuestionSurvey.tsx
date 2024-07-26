@@ -2,27 +2,36 @@
 import MainBtn from "@/components/common/MainBtn";
 import Question from "@/components/questions/Question";
 import { questions } from "@/data";
-import { UserDataType } from "@/types";
 import React, { useState } from "react";
 
 type Props = {
+  handleStressScore: (score: number) => void;
   onNext: () => void;
 };
 
-const QuestionSurvey = ({ onNext }: Props) => {
+const QuestionSurvey = ({ handleStressScore, onNext }: Props) => {
   const [score, setScore] = useState(0);
   const [currentSelection, setCurrentSelection] = useState(-1);
   const [phase, setPhase] = useState(1);
-  const increasePhase = () => {
-    if (phase + 1 <= 10) setPhase(phase + 1);
-    setCurrentSelection(-1);
-  };
-  const handleCurrentSelection = (selection: number) => {
-    setCurrentSelection(selection);
-  };
+
+  /** 총 점수 관리 */
   const handleScore = (sc: number) => {
     setScore(score + sc);
   };
+
+  /** 페이즈당 정보 관리 */
+  const increasePhase = () => {
+    if (phase + 1 <= 10) setPhase(phase + 1);
+    handleScore(currentSelection);
+    // state 변화 후 바로 사용
+    handleStressScore(currentSelection + score);
+    setCurrentSelection(-1);
+  };
+
+  const handleCurrentSelection = (selection: number) => {
+    setCurrentSelection(selection);
+  };
+
   return (
     <>
       <Question
@@ -32,11 +41,14 @@ const QuestionSurvey = ({ onNext }: Props) => {
         currentSelection={currentSelection}
         handleCurrentSelection={handleCurrentSelection}
         MainBtnChildren={
-          phase === 10 ? (
-            <MainBtn text="다음" available={true} onClick={onNext} />
-          ) : (
-            <MainBtn text="다음" available={true} onClick={increasePhase} />
-          )
+          <MainBtn
+            text="다음"
+            available={currentSelection !== -1}
+            onClick={() => {
+              phase === 10 && onNext();
+              increasePhase();
+            }}
+          />
         }
       />
     </>
