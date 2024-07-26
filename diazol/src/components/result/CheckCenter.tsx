@@ -5,13 +5,13 @@ import MorseGraphic from "./MorseGraphic";
 import { playMorseSound } from "@/utils/playMorseSound";
 import { UserDataType } from "@/types";
 
-type Props = {
+type CheckCenterProps = {
   userData: UserDataType;
   showResult: () => void;
   morseCode: string;
 };
 
-const CheckCenter = ({ userData, showResult, morseCode }: Props) => {
+const CheckCenter = ({ userData, showResult, morseCode }: CheckCenterProps) => {
   const [seeResult, setSeeResult] = useState(false);
 
   const lastSubmit = async () => {
@@ -28,10 +28,10 @@ const CheckCenter = ({ userData, showResult, morseCode }: Props) => {
     <div>
       {seeResult ? (
         <div className="flex justify-center text-center">
-          <h1 className="text-3xl font-semibold mt-20 text-white leading-10">
-            <p>중앙에서</p>
-            <p>결과를 확인하세요!</p>
-          </h1>
+          <div className="text-3xl font-semibold mt-20 text-white leading-10">
+            <h1>중앙에서</h1>
+            <h1>결과를 확인하세요!</h1>
+          </div>
           <MainBtn text="확인 !" available={true} onClick={lastSubmit} />
         </div>
       ) : (

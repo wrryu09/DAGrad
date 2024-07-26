@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
 import SelectionBtn from "./SelectionBtn";
 import SelectionBtnGroup from "./SelectionBtnGroup";
 import { fiveSelectionBtnContent } from "@/data";
 
 type QuestionProps = {
-  Qnum?: number;
   title: string;
   content: string;
   currentSelection: number;
@@ -13,34 +11,12 @@ type QuestionProps = {
 };
 
 const Question = ({
-  Qnum,
   title,
   content,
   currentSelection,
   handleCurrentSelection,
   MainBtnChildren,
 }: QuestionProps) => {
-  const order = [1, 2, 3, 6, 9, 10];
-  const [val, setVal] = useState(-1);
-
-  // reset selection on Qnum change
-  useEffect(() => {
-    setVal(-1);
-  }, [Qnum]);
-
-  // set value via question order
-  useEffect(() => {
-    if (Qnum) {
-      if (order.includes(Qnum)) {
-        setVal(currentSelection);
-      } else {
-        setVal(4 - currentSelection);
-      }
-    } else {
-      setVal(currentSelection);
-    }
-  }, [currentSelection, Qnum]);
-
   return (
     <div className="flex flex-col text-white break-keep whitespace-pre-wrap">
       <div className="mt-10 px-8">
