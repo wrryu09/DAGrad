@@ -3,16 +3,16 @@ import Spinner from "@/components/common/\bSpinner";
 import TopBar from "@/components/common/TopBar";
 import CheckCenter from "@/components/result/CheckCenter";
 import StressResult from "@/components/result/StressResult";
-import { useData } from "@/utils/DataContext";
+import { UserDataType } from "@/types";
 import changeToMorse from "@/utils/changeToMorse";
-import changeToStableMorse from "@/utils/changeToStableMorse";
 import React, { useEffect, useState } from "react";
 
-type Props = {};
+type Props = {
+  userData: UserDataType;
+};
 
-const Page = (props: Props) => {
+const ResultPage = ({ userData }: Props) => {
   const [showRes, setShowRes] = useState(false);
-  const { data } = useData();
   const [morseCode, setMorseCode] = useState<string>("");
 
   const handleMorseCode = (text: string) => setMorseCode(text);
@@ -22,19 +22,22 @@ const Page = (props: Props) => {
   };
 
   useEffect(() => {
-    changeToMorse(data.stressWord, handleMorseCode);
-    // changeToStableMorse(data.stressWord, handleMorseCode);
+    changeToMorse(userData.stressWord, handleMorseCode);
   }, []);
 
   return (
     <div>
       <TopBar />
       {showRes ? (
-        <StressResult morseCode={morseCode} />
+        <StressResult userData={userData} morseCode={morseCode} />
       ) : (
         <>
           {morseCode !== "" ? (
-            <CheckCenter showResult={showResult} morseCode={morseCode} />
+            <CheckCenter
+              userData={userData}
+              showResult={showResult}
+              morseCode={morseCode}
+            />
           ) : (
             <div className="flex items-center justify-center mt-60">
               <Spinner />
@@ -46,4 +49,4 @@ const Page = (props: Props) => {
   );
 };
 
-export default Page;
+export default ResultPage;

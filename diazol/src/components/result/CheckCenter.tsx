@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import MainBtn from "../common/MainBtn";
-import { useData } from "@/utils/DataContext";
 import { putUserData } from "@/utils/putEmojiNum";
 import MorseGraphic from "./MorseGraphic";
 import { playMorseSound } from "@/utils/playMorseSound";
+import { UserDataType } from "@/types";
 
 type Props = {
+  userData: UserDataType;
   showResult: () => void;
   morseCode: string;
 };
 
-const CheckCenter = (props: Props) => {
-  const { data } = useData();
+const CheckCenter = ({ userData, showResult, morseCode }: Props) => {
   const [seeResult, setSeeResult] = useState(false);
 
   const lastSubmit = async () => {
-    await putUserData(data);
-    props.showResult();
-    playMorseSound(props.morseCode, data.stressType);
+    await putUserData(userData);
+    showResult();
+    playMorseSound(morseCode, userData.stressType);
   };
   useEffect(() => {
     setTimeout(() => {
@@ -36,7 +36,7 @@ const CheckCenter = (props: Props) => {
         </div>
       ) : (
         <div className="h-dvh flex justify-center items-center">
-          <MorseGraphic morseCode={props.morseCode} />
+          <MorseGraphic morseCode={morseCode} />
         </div>
       )}
     </div>

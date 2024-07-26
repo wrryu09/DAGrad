@@ -4,13 +4,12 @@ import React, { useEffect, useState } from "react";
 import EmoSurvey from "./__pageComponents/EmoSurvey";
 import QuestionSurvey from "./__pageComponents/QuestionSurvey";
 import TextSurvey from "./__pageComponents/TextSurvey";
-import { useRouter } from "next/navigation";
 import TypeSurvey from "./__pageComponents/TypeSurvey";
+import ResultPage from "./__pageComponents/ResultPage";
 
 type Props = {};
 
 const Page = (props: Props) => {
-  const router = useRouter();
   const [step, setStep] = useState("question");
   const [data, setData] = useState<UserDataType>({
     stressType: -1,
@@ -50,10 +49,11 @@ const Page = (props: Props) => {
         <TextSurvey
           handleText={handleText}
           onNext={() => {
-            router.push("/result");
+            setStep("result");
           }}
         />
       )}
+      {step === "result" && <ResultPage userData={data} />}
     </>
   );
 };
